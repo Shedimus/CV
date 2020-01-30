@@ -18,6 +18,7 @@ PDF_EXPORT <- FALSE
 
 library(glue)
 library(tidyverse)
+library(here)
 
 # Holds all the links that were inserted for placement at the end
 links <- c()
@@ -25,7 +26,7 @@ links <- c()
 source('parsing_functions.R')
 
 # Load csv with position info
-position_data <- read_csv('data/positions.csv')
+position_data <- read_csv(here("data", "positions.csv"))
 ```
 
 
@@ -40,11 +41,11 @@ Contact {#contact}
 --------------------------------------------------------------------------------
 
 
-- <i class="fa fa-envelope"></i> sheaconnell@gmail.com
+- <i class="fa fa-envelope"></i> [sheaconnell@gmail.com](mailto:sheaconnell@gmail.com)
+<!-- - <i class="fas fa-globe"></i> [theOisOptional.me](https://theOisOptional.me) -->
 - <i class="fa fa-twitter"></i> [\@Shedimus](https://twitter.com/Shedimus)
 - <i class="fa fa-github"></i> [Shedimus](https://github.com/Shedimus)
 - <i class="fas fa-university"></i> [Shea P. Connell](https://scholar.google.com/citations?user=rgzC_hIAAAAJ&hl=en)
-- <i class="fa fa-linkedin"></i> [SheaConnell](https://www.linkedin.com/in/sheaconnell/)
 - <i class="fa fa-phone"></i> +44 (0) 7587 103339
 
 
@@ -67,19 +68,6 @@ build_skill_bars(skills)
 ```
 
 
-
-
-
-Disclaimer {#disclaimer}
---------------------------------------------------------------------------------
-
-Made using the [**pagedown**](https://github.com/rstudio/pagedown) package for R. 
-
-The source code is available at [github.com/Shedimus/CV](https://github.com/Shedimus/cv).
-
-Last updated on `r Sys.Date()`.
-
-
 Main
 ================================================================================
 
@@ -88,35 +76,22 @@ Shea O'Connell {#title}
 
 
 ```{r}
-intro_text <- "During my PhD I developed predictive models for a [urine-based test for prostate cancer](https://www.bbc.com/news/health-48756732), robust machine-learning pipelines for [automated & reproducible biomarker discovery in multi-omic prostate cancer studies](Link to ExoMeth/Spec/Grail), and collaborated on [R packages](https://github.com/brentthorne/posterdown) that let you [make award-winning posters](http://SheaConnell.me/EACR_Poster/).
+intro_text <- "During my PhD I developed predictive models for a [urine-based test for prostate cancer](https://www.bbc.com/news/health-48756732), robust machine-learning pipelines for [automated & reproducible biomarker discovery in multi-omic prostate cancer studies](https://github.com/Shedimus/ExoMeth), and collaborated on [R packages](https://github.com/brentthorne/posterdown) that let you [make award-winning posters](https://www.theoisoptional.me/files/EACR_poster.pdf).
 
-I am currently searching for a data science position where I can make an impact with data and bring change to people's lives. Keenly interested in helping others understand and explore their data from start to finish from experiment design & data collection through to machine learning and dynamic visualistions."
+I am currently searching for a data science position where I can make an impact with data and bring change to people's lives. I am keenly interested in helping others understand and explore their data from start to finish from experiment design & data collection through to machine learning and dynamic visualistions."
 
 cat(sanitize_links(intro_text))
 ```
 
-
-
-Education {data-icon=graduation-cap data-concise=true}
+Education & Employment {data-icon=graduation-cap data-concise=true}
 --------------------------------------------------------------------------------
 
 ```{r}
-print_section(position_data, 'education')
+print_section(position_data, 'edu_employ')
 ```
 
-
-
-Employment {data-icon=suitcase}
---------------------------------------------------------------------------------
-
-::: aside
-I have worked in a variety of roles ranging from commercial diver to marine biologist to clinical data scientist. I like to work as part of a collaborative team moving towards similar goals. 
-:::
-
-```{r}
-print_section(position_data, 'employment')
-```
-
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -124,16 +99,20 @@ print_section(position_data, 'employment')
 Training and Skills {data-icon=chalkboard-teacher}
 --------------------------------------------------------------------------------
 
-::: aside
-I enjoy learning and skill development. Given enough time I'm comfortable learning any new skill, language or method, and believe that domain knowledge, while powerful, shouldn't set the limits of study.
-:::
-
 ```{r}
 print_section(position_data, 'training_skills')
 ```
 
 
-Publications, Posters, and Talks {data-icon=book}
+First Author Publications {data-icon=book}
+--------------------------------------------------------------------------------
+
+```{r}
+print_section(position_data, "first_author")
+```
+
+
+Other Publications {data-icon=book}
 --------------------------------------------------------------------------------
 
 ```{r}
@@ -146,3 +125,27 @@ Awards and Interests {data-icon=award}
 ```{r}
 print_section(position_data, 'awards_personal')
 ```
+
+
+References {data-icon=envelope}
+--------------------------------------------------------------------------------
+
+### Dr. Daniel Brewer,
+
+d.brewer@uea.ac.uk 
+
+Senior Lecturer & Primary Supervisor  
+
+N/A 
+
++44 (0) 1603 593761
+
+### Prof. Colin Cooper,
+
+Colin.Cooper@uea.ac.uk 
+
+Dean of Research and Cancer Genetics Lead  
+
+N/A 
+
++44 (0) 1603 592246
